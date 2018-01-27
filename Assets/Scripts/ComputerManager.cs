@@ -31,7 +31,8 @@ public class ComputerManager : MonoBehaviour {
     {
         //StartNPCGuideDialogue();
         ComputerScreen.SetActive(true);
-        TypingManager.Instance.DeactivateInputField();
+        TypingManager.Instance.inputField.enabled = false;
+        //TypingManager.Instance.DeactivateInputField();
         currBoxCollider = collider;
         //TypingManager.Instance.PauseGame();
     }

@@ -34,7 +34,10 @@ public class TypingManager : MonoBehaviour {
     public void StartGame()
     {
         helperText.enabled = true;
+        inputField.enabled = true;
         helperText.text = currentStringToType;
+
+        inputField.ActivateInputField();
         StartTimer();
     }
     public void PauseGame()
@@ -50,23 +53,15 @@ public class TypingManager : MonoBehaviour {
         }
         return false;
     }
-    public void DeactivateInputField()
-    {
-        //inputField.DeactivateInputField();
 
-    }
     public void ActivateInputField()
     {
         inputField.ActivateInputField();
     }
     public void EnterString(string input)
     {
-        //Debug.Log("HEY ENTERED STRING");
-        //Debug.Log("enteredstring");
         inputField.ActivateInputField();
-        //Debug.Log(timer.pause);
-        //Debug.Log(input);
-        if (input.Equals(helperText.text))
+        if (input.Equals(helperText.text) && !timer.pause)
         {
             Debug.Log("its equalC:");
             StartTimer();
@@ -85,7 +80,8 @@ public class TypingManager : MonoBehaviour {
     public void Win()
     {
         helperText.text = "Good job you destroyed him!";
-        ComputerManager.Instance.Invoke("TurnOffComputer", 1.5f);
+        ComputerManager.Instance.Invoke("TurnOffComputer", 1.2f);
+        CharacterController.Instance.SetMoveTrue();
         //Invoke(ComputerManager.Instance.)
     }
     public void ChangeString()
@@ -97,18 +93,23 @@ public class TypingManager : MonoBehaviour {
     {
         _instance = this;
     }
+    void OnEditInputField(InputField input)
+    {
+        if(timer.pause)
+        {
+            //input.text = "";
+        }
+    }
     void Start () {
+        inputField.onEndEdit.AddListener(delegate { OnEditInputField(inputField); });
+
+        inputField.ActivateInputField();
         helperText.text = currentStringToType;
         timer = GetComponentInChildren<Timer>();
     }
 
     // Update is called once per frame
     void Update () {
-        //if(IsDialogueActive())
-        //{
-
-        //}
-
         if (Input.GetKeyDown("escape"))
             Application.Quit();
     }

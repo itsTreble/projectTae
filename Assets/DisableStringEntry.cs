@@ -6,7 +6,7 @@ public class DisableStringEntry : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        TypingManager.Instance.DeactivateInputField();	
+        //TypingManager.Instance.DeactivateInputField();	
 	}
 	
 	// Update is called once per frame

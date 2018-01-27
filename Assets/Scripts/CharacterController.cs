@@ -7,8 +7,22 @@ public class CharacterController : MonoBehaviour {
     public float moveSpeed = 7f;
     public GameObject currentInteractable = null;
     bool move = true;
-	// Use this for initialization
-	void Start () {
+    static CharacterController _instance;
+    public static CharacterController Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                //GameObject go = new GameObject("TypingManager");
+                //go.AddComponent<SoundManager>();
+            }
+            return _instance;
+        }
+    }
+    // Use this for initialization
+    void Awake () {
+        _instance = this;
 		
 	}
 	public void SetMoveTrue()
