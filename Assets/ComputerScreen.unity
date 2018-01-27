@@ -1312,6 +1312,11 @@ Prefab:
       propertyPath: m_Name
       value: RPGTalk Holder CompScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 114454612980158588, guid: e010b6a764118884a93e8f01795694d3,
+        type: 2}
+      propertyPath: dialogerUI
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e010b6a764118884a93e8f01795694d3, type: 2}
   m_IsPrefabParent: 0
@@ -1873,7 +1878,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6fe35ef24b6ca481494e3fcef8f39aa0,
+      objectReference: {fileID: 21300000, guid: 581d4127668b52d47bd6f98821c80de5,
         type: 3}
     - target: {fileID: 114753011136690726, guid: e010b6a764118884a93e8f01795694d3,
         type: 2}
@@ -1898,6 +1903,45 @@ Prefab:
     - target: {fileID: 1897846469046260, guid: e010b6a764118884a93e8f01795694d3, type: 2}
       propertyPath: m_Name
       value: RPGTalk Holder Objects
+      objectReference: {fileID: 0}
+    - target: {fileID: 224357940528223628, guid: e010b6a764118884a93e8f01795694d3,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224357940528223628, guid: e010b6a764118884a93e8f01795694d3,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224357940528223628, guid: e010b6a764118884a93e8f01795694d3,
+        type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792543237558384, guid: e010b6a764118884a93e8f01795694d3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224357940528223628, guid: e010b6a764118884a93e8f01795694d3,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -3.752
+      objectReference: {fileID: 0}
+    - target: {fileID: 224357940528223628, guid: e010b6a764118884a93e8f01795694d3,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 73.823
+      objectReference: {fileID: 0}
+    - target: {fileID: 224357940528223628, guid: e010b6a764118884a93e8f01795694d3,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.193
+      objectReference: {fileID: 0}
+    - target: {fileID: 224357940528223628, guid: e010b6a764118884a93e8f01795694d3,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 70.567
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e010b6a764118884a93e8f01795694d3, type: 2}

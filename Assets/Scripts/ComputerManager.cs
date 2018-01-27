@@ -7,6 +7,7 @@ public class ComputerManager : MonoBehaviour {
     public GameObject NPCGuideDialogue;
     static ComputerManager _instance;
     BoxCollider2D currBoxCollider;
+    RPGTalkArea talkArea;
     public static ComputerManager Instance
     {
         get
@@ -27,15 +28,19 @@ public class ComputerManager : MonoBehaviour {
     {
         NPCGuideDialogue.SetActive(true);
     }
-    public void TurnOnComputer(BoxCollider2D collider)
+    public void TurnOnComputer(RPGTalkArea talkA)
     {
+        talkArea = talkA;
+        talkArea.enabled = false;
         ComputerScreen.SetActive(true);
         TypingManager.Instance.inputField.enabled = false;
-        currBoxCollider = collider;
+        //currBoxCollider = collider;
     }
     public void TurnOffComputer()
     {
         //currBoxCollider.en
+        talkArea.enabled = true;
         ComputerScreen.SetActive(false);
+        CharacterController.Instance.SetMoveTrue();
     }
 }
