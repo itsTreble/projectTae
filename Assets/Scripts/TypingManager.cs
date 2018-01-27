@@ -15,6 +15,7 @@ public class TypingManager : MonoBehaviour {
     public int wrongCount = 0;
     int maxWrong = 3;
     public GameObject compDialogue;
+    public TurnOnComputer turnOnComputer;
     Timer timer;
     IWinAction win;
 
@@ -38,6 +39,11 @@ public class TypingManager : MonoBehaviour {
     public void AddWrong()
     {
         wrongCount++;
+        if(wrongCount >= maxWrong)
+        {
+            helperText.text = "Argh! he's kicking me off!";
+            Invoke("Lose", 1.4f);
+        }
     }
     public void StartTimer()
     {
@@ -72,7 +78,6 @@ public class TypingManager : MonoBehaviour {
         inputField.ActivateInputField();
         if (input.Equals(helperText.text) && !timer.pause)
         {
-            StartTimer();
             correctWord++;
             ChangeString();
             if(correctWord == maxScore)
@@ -91,21 +96,20 @@ public class TypingManager : MonoBehaviour {
     public void Lose()
     {
 
+        helperText.text = "";
         ComputerManager.Instance.TurnOffComputer();
-        // lose screen
     }
     public void Win()
     {
-
         helperText.text = "Good job you destroyed him!";
         ComputerManager.Instance.Invoke("TurnOffComputer", 1.2f);
         CharacterController.Instance.SetMoveTrue();
-        //helperText.text = "";
-
-        //Invoke(ComputerManager.Instance.)
+        ComputerManager.Instance.talkArea.GetComponent<BoxCollider2D>().enabled = false;
+        turnOnComputer.win = true;
     }
     public void ChangeString()
     {
+        StartTimer();
         currentStringToType = "mai" + Random.Range(1,100);
         helperText.text = currentStringToType;
     }

@@ -28,5 +28,10 @@ public class Timer : MonoBehaviour {
             currTime -= Time.deltaTime;
             img.fillAmount = currTime / maxTime;
         }
+        else if(currTime <= 0)
+        {
+            TypingManager.Instance.AddWrong();
+            TypingManager.Instance.ChangeString();
+        }
 	}
 }

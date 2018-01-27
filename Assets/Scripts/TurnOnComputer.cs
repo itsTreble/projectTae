@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class TurnOnComputer : MonoBehaviour,IInteractable {
     public GameObject ComputerScreen;
-    bool win = false;
+    public bool win = false;
 	// Use this for initialization
 	public void Interact()
     {
+        //win = true;
         if (win)
         {
             GetComponentInChildren<RPGTalkArea>().enabled = false;
+
+            //ComputerManager.Instance.TurnOnComputer(GetComponentInChildren<RPGTalkArea>());
+            //GetComponentInChildren<RPGTalkArea>().lineToStart = "42";
+            //GetComponentInChildren<RPGTalkArea>().lineToBreak = "42";
+            //TypingManager.Instance.turnOnComputer = this;
+            //CharacterController.Instance.SetMoveFalse();
         }
         else
         {
+            TypingManager.Instance.turnOnComputer = this;
             CharacterController.Instance.SetMoveFalse();
             ComputerManager.Instance.TurnOnComputer(GetComponentInChildren<RPGTalkArea>());
             GetComponent<BoxCollider2D>().enabled = false;

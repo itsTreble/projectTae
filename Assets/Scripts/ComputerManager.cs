@@ -7,7 +7,7 @@ public class ComputerManager : MonoBehaviour {
     public GameObject NPCGuideDialogue;
     static ComputerManager _instance;
     BoxCollider2D currBoxCollider;
-    RPGTalkArea talkArea;
+    public RPGTalkArea talkArea;
     public static ComputerManager Instance
     {
         get

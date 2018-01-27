@@ -550,7 +550,7 @@ MonoBehaviour:
   txtToParse: {fileID: 0}
   callbackScriptAfterTalk: {fileID: 1056068093}
   callbackFunctionAfterTalk: StartGame
-  happenOnlyOnce: 1
+  happenOnlyOnce: 0
   alreadyHappened: 0
   triggerEnter: 1
   triggerExit: 0
@@ -1012,7 +1012,9 @@ MonoBehaviour:
   loadingBar: {fileID: 1238977518}
   correctWord: 0
   maxScore: 3
+  wrongCount: 0
   compDialogue: {fileID: 0}
+  turnOnComputer: {fileID: 0}
 --- !u!114 &1056068094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1222,7 +1224,7 @@ Prefab:
     - target: {fileID: 114889087043802850, guid: e010b6a764118884a93e8f01795694d3,
         type: 2}
       propertyPath: m_Color.a
-      value: 0.766
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1085553459402672, guid: e010b6a764118884a93e8f01795694d3, type: 2}
       propertyPath: m_IsActive
@@ -2517,6 +2519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ComputerScreen: {fileID: 2113117666}
+  win: 0
 --- !u!212 &1656573261
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2644,6 +2647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ComputerScreen: {fileID: 2113117666}
   NPCGuideDialogue: {fileID: 0}
+  talkArea: {fileID: 0}
 --- !u!1 &2074927286
 GameObject:
   m_ObjectHideFlags: 0
