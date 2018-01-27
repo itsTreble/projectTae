@@ -8,6 +8,7 @@ public class TypingManager : MonoBehaviour {
     string currentStringToType = "password";
     // Use this for initialization
     static TypingManager _instance;
+    public InputField inputField;
 
     public static TypingManager Instance
     {
@@ -32,9 +33,12 @@ public class TypingManager : MonoBehaviour {
     }
     public void EnterString(string input)
     {
+        inputField.text = "";
         Debug.Log("enteredstring");
+        inputField.ActivateInputField();
         if (input.Equals(helperText.text))
         {
+
             Debug.Log("hey its equal");
             ChangeString();
         }
