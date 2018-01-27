@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TypingManager : MonoBehaviour {
     public Text helperText;
-    string currentStringToType = "Mai is so cool";
+    string currentStringToType = "password";
     // Use this for initialization
     static TypingManager _instance;
 
@@ -32,14 +32,29 @@ public class TypingManager : MonoBehaviour {
     }
     public void EnterString(string input)
     {
+        Debug.Log("enteredstring");
+        if (input.Equals(helperText.text))
+        {
+            Debug.Log("hey its equal");
+            ChangeString();
+        }
+    }
+    public void ChangeString()
+    {
+        currentStringToType = "mai";
+        helperText.text = currentStringToType;
+    }
+    private void Awake()
+    {
+        _instance = this;
+    }
+    void Start () {
+        helperText.text = currentStringToType;
 
     }
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }
