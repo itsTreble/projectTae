@@ -9,6 +9,7 @@ public class TurnOnComputer : MonoBehaviour,IInteractable {
 	public void Interact()
     {
         ComputerManager.Instance.TurnOnComputer();
+        TypingManager.Instance.DeactivateInputField();
         //ComputerScreen.SetActive(true);
         Debug.Log("turn on computer");
         //turn on computer

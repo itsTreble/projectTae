@@ -12,6 +12,7 @@ public class TypingManager : MonoBehaviour {
     public Image loadingBar;
     public int correctWord = 0;
     public int maxScore = 3;
+    public GameObject compDialogue;
     Timer timer;
     //bool inGameMode = false;
     public static TypingManager Instance
@@ -25,6 +26,10 @@ public class TypingManager : MonoBehaviour {
             }
             return _instance;
         }
+    }
+    bool IsDialogueActive()
+    {
+        return compDialogue.activeSelf;
     }
     public void StartTimer()
     {
@@ -46,6 +51,15 @@ public class TypingManager : MonoBehaviour {
             return true;
         }
         return false;
+    }
+    public void DeactivateInputField()
+    {
+        inputField.DeactivateInputField();
+
+    }
+    public void ActivateInputField()
+    {
+        inputField.ActivateInputField();
     }
     public void EnterString(string input)
     {
@@ -87,6 +101,10 @@ public class TypingManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        //if(IsDialogueActive())
+        //{
+
+        //}
 
         if (Input.GetKeyDown("escape"))
             Application.Quit();

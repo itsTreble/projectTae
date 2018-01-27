@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ComputerManager : MonoBehaviour {
     public GameObject ComputerScreen;
+    public GameObject NPCGuideDialogue;
     static ComputerManager _instance;
 
     public static ComputerManager Instance
@@ -22,9 +23,15 @@ public class ComputerManager : MonoBehaviour {
     {
         _instance = this;
     }
+    void StartNPCGuideDialogue()
+    {
+        NPCGuideDialogue.SetActive(true);
+    }
     public void TurnOnComputer()
     {
+        //StartNPCGuideDialogue();
         ComputerScreen.SetActive(true);
+        TypingManager.Instance.DeactivateInputField();
         //TypingManager.Instance.PauseGame();
     }
     public void TurnOffComputer()
