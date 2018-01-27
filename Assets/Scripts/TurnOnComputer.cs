@@ -8,8 +8,10 @@ public class TurnOnComputer : MonoBehaviour,IInteractable {
 	// Use this for initialization
 	public void Interact()
     {
-        ComputerManager.Instance.TurnOnComputer();
-        TypingManager.Instance.DeactivateInputField();
+        ComputerManager.Instance.TurnOnComputer(GetComponent<BoxCollider2D>());
+        //TypingManager.Instance.DeactivateInputField();
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponentInChildren<BoxCollider2D>().enabled = false;
         //ComputerScreen.SetActive(true);
         Debug.Log("turn on computer");
         //turn on computer

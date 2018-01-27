@@ -6,7 +6,7 @@ public class ComputerManager : MonoBehaviour {
     public GameObject ComputerScreen;
     public GameObject NPCGuideDialogue;
     static ComputerManager _instance;
-
+    BoxCollider2D currBoxCollider;
     public static ComputerManager Instance
     {
         get
@@ -27,15 +27,17 @@ public class ComputerManager : MonoBehaviour {
     {
         NPCGuideDialogue.SetActive(true);
     }
-    public void TurnOnComputer()
+    public void TurnOnComputer(BoxCollider2D collider)
     {
         //StartNPCGuideDialogue();
         ComputerScreen.SetActive(true);
         TypingManager.Instance.DeactivateInputField();
+        currBoxCollider = collider;
         //TypingManager.Instance.PauseGame();
     }
     public void TurnOffComputer()
     {
+        //currBoxCollider.en
         ComputerScreen.SetActive(false);
     }
 }

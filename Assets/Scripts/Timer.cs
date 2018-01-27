@@ -14,6 +14,7 @@ public class Timer : MonoBehaviour {
 	}
 	public void StartTimer()
     {
+        pause = false;
         currTime = maxTime;
     }
     public void PauseTimer()

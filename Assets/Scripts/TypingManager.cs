@@ -27,16 +27,14 @@ public class TypingManager : MonoBehaviour {
             return _instance;
         }
     }
-    bool IsDialogueActive()
-    {
-        return compDialogue.activeSelf;
-    }
     public void StartTimer()
     {
         timer.StartTimer();
     }
     public void StartGame()
     {
+        helperText.enabled = true;
+        helperText.text = currentStringToType;
         StartTimer();
     }
     public void PauseGame()
@@ -54,7 +52,7 @@ public class TypingManager : MonoBehaviour {
     }
     public void DeactivateInputField()
     {
-        inputField.DeactivateInputField();
+        //inputField.DeactivateInputField();
 
     }
     public void ActivateInputField()
@@ -63,11 +61,14 @@ public class TypingManager : MonoBehaviour {
     }
     public void EnterString(string input)
     {
-        inputField.text = "";
+        //Debug.Log("HEY ENTERED STRING");
         //Debug.Log("enteredstring");
         inputField.ActivateInputField();
-        if (input.Equals(helperText.text) && !timer.pause)
+        //Debug.Log(timer.pause);
+        //Debug.Log(input);
+        if (input.Equals(helperText.text))
         {
+            Debug.Log("its equalC:");
             StartTimer();
             correctWord++;
             //Debug.Log("hey its equal");
@@ -78,6 +79,8 @@ public class TypingManager : MonoBehaviour {
                 //ComputerManager.Instance.TurnOffComputer();
             }
         }
+        inputField.text = "";
+
     }
     public void Win()
     {
