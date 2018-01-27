@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class TypingManager : MonoBehaviour {
     public Text helperText;
     string currentStringToType = "password";
-    // Use this for initialization
     static TypingManager _instance;
     public InputField inputField;
     public Image loadingBar;
@@ -14,6 +13,8 @@ public class TypingManager : MonoBehaviour {
     public int maxScore = 3;
     public GameObject compDialogue;
     Timer timer;
+    IWinAction win;
+
     //bool inGameMode = false;
     public static TypingManager Instance
     {
@@ -27,16 +28,20 @@ public class TypingManager : MonoBehaviour {
             return _instance;
         }
     }
+    public void SetWinAction(IWinAction winA)
+    {
+        this.win = winA;
+    }
     public void StartTimer()
     {
         timer.StartTimer();
     }
     public void StartGame()
     {
+        Debug.Log("called start game");
         helperText.enabled = true;
         inputField.enabled = true;
         helperText.text = currentStringToType;
-
         inputField.ActivateInputField();
         StartTimer();
     }
@@ -63,15 +68,13 @@ public class TypingManager : MonoBehaviour {
         inputField.ActivateInputField();
         if (input.Equals(helperText.text) && !timer.pause)
         {
-            Debug.Log("its equalC:");
             StartTimer();
             correctWord++;
-            //Debug.Log("hey its equal");
             ChangeString();
             if(correctWord == maxScore)
             {
+                win.WinAction();
                 Win();
-                //ComputerManager.Instance.TurnOffComputer();
             }
         }
         inputField.text = "";
@@ -102,7 +105,6 @@ public class TypingManager : MonoBehaviour {
     }
     void Start () {
         inputField.onEndEdit.AddListener(delegate { OnEditInputField(inputField); });
-
         inputField.ActivateInputField();
         helperText.text = currentStringToType;
         timer = GetComponentInChildren<Timer>();

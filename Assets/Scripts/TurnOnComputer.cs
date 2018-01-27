@@ -10,12 +10,10 @@ public class TurnOnComputer : MonoBehaviour,IInteractable {
     {
         CharacterController.Instance.SetMoveFalse();
         ComputerManager.Instance.TurnOnComputer(GetComponent<BoxCollider2D>());
-        //TypingManager.Instance.DeactivateInputField();
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponentInChildren<BoxCollider2D>().enabled = false;
-        //ComputerScreen.SetActive(true);
+        TypingManager.Instance.SetWinAction(GetComponent<IWinAction>());
         Debug.Log("turn on computer");
-        //turn on computer
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {

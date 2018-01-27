@@ -7,7 +7,7 @@ public class Timer : MonoBehaviour {
     public Image img;
     float currTime;
     float maxTime = 10;
-    public bool pause = false;
+    public bool pause = true;
 	// Use this for initialization
 	void Start () {
         currTime = maxTime;

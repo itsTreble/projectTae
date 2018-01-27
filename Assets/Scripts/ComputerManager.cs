@@ -29,12 +29,9 @@ public class ComputerManager : MonoBehaviour {
     }
     public void TurnOnComputer(BoxCollider2D collider)
     {
-        //StartNPCGuideDialogue();
         ComputerScreen.SetActive(true);
         TypingManager.Instance.inputField.enabled = false;
-        //TypingManager.Instance.DeactivateInputField();
         currBoxCollider = collider;
-        //TypingManager.Instance.PauseGame();
     }
     public void TurnOffComputer()
     {
