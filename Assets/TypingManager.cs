@@ -41,7 +41,7 @@ public class TypingManager : MonoBehaviour {
     }
     public void ChangeString()
     {
-        currentStringToType = "mai";
+        currentStringToType = "mai" + Random.Range(1,100);
         helperText.text = currentStringToType;
     }
     private void Awake()
