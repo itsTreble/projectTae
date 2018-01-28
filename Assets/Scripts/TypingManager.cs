@@ -17,6 +17,7 @@ public class TypingManager : MonoBehaviour {
     int maxWrong = 3;
     public GameObject compDialogue;
     public TurnOnComputer turnOnComputer;
+    public int round = 0;
     Timer timer;
     IWinAction win;
 
@@ -108,6 +109,7 @@ public class TypingManager : MonoBehaviour {
     }
     public void Win()
     {
+        round++;
         timer.pause = true;
         helperText.text = "YES! Thank you!";
         Invoke("ClearText", 1.2f);

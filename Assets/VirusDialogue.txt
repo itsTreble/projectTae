@@ -1,3 +1,8 @@
--------- Evil script ---------
+EvilScript0
 Oh? Are you locked in?
 That's unfortunate.
+EndScript0
+
+EvilScript1
+You again?
+EndScript1

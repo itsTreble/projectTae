@@ -6,8 +6,11 @@ public class DialogueManager : MonoBehaviour {
     static DialogueManager _instance;
     public string start = "1";
     public string end = "1";
+    public string dialoguePrefex = "EvilScript";
+    public string dialoguePrefex2 = "EndScript";
+    int currentRound = 0;
 
-    public RPGTalk rpgTalk;
+    public RPGTalk rpgVirusTalk;
     public static DialogueManager Instance
     {
         get
@@ -18,8 +21,21 @@ public class DialogueManager : MonoBehaviour {
             return _instance;
         }
     }
+    void OnEndTalk()
+    {
+        TypingManager.Instance.StartGame();
+    }
     public void Talk()
     {
-        rpgTalk.NewTalk(start, end);
+        rpgVirusTalk.NewTalk("2", "3");
+
+        if (TypingManager.Instance.round >= 1)
+        {
+            rpgVirusTalk.OnEndTalk += OnEndTalk;
+            //rpgVirusTalk.
+            //rpgVirusTalk.callbackFunction += TypingManager.Instance.StartGame;
+
+        }
+
     }
 }
