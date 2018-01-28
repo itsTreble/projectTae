@@ -13,11 +13,6 @@ public class TurnOnComputer : MonoBehaviour,IInteractable {
         {
             GetComponentInChildren<RPGTalkArea>().enabled = false;
 
-            //ComputerManager.Instance.TurnOnComputer(GetComponentInChildren<RPGTalkArea>());
-            //GetComponentInChildren<RPGTalkArea>().lineToStart = "42";
-            //GetComponentInChildren<RPGTalkArea>().lineToBreak = "42";
-            //TypingManager.Instance.turnOnComputer = this;
-            //CharacterController.Instance.SetMoveFalse();
         }
         else
         {

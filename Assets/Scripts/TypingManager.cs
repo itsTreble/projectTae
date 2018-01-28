@@ -8,7 +8,8 @@ public class TypingManager : MonoBehaviour {
     string currentStringToType = "password";
     static TypingManager _instance;
     public InputField inputField;
-
+    public RPGTalk rpgTalk;
+    //public RPGTalkArea rpgTalk;
     public Image loadingBar;
     public int correctWord = 0;
     public int maxScore = 3;
@@ -49,9 +50,11 @@ public class TypingManager : MonoBehaviour {
     {
         timer.StartTimer();
     }
+
     public void StartGame()
     {
-        Debug.Log("called start game");
+        wrongCount = 0;
+        correctWord = 0;
         helperText.enabled = true;
         inputField.enabled = true;
         helperText.text = currentStringToType;
@@ -75,37 +78,48 @@ public class TypingManager : MonoBehaviour {
             helperText.text = "Argh! he's kicking me off!";
             Invoke("Lose", 1.4f);
         }
-        inputField.ActivateInputField();
-        if (input.Equals(helperText.text) && !timer.pause)
-        {
-            correctWord++;
-            ChangeString();
-            if(correctWord == maxScore)
-            {
-                win.WinAction();
-                Win();
-            }
-        }
         else
         {
-            wrongCount++;
+            inputField.ActivateInputField();
+            if (input.Equals(helperText.text) && !timer.pause)
+            {
+                correctWord++;
+                ChangeString();
+                if (correctWord == maxScore)
+                {
+                    win.WinAction();
+                    Win();
+                }
+            }
+            else
+            {
+                wrongCount++;
+            }
         }
         inputField.text = "";
+
+
 
     }
     public void Lose()
     {
-
         helperText.text = "";
         ComputerManager.Instance.TurnOffComputer();
     }
     public void Win()
     {
-        helperText.text = "Good job you destroyed him!";
+        timer.pause = true;
+        helperText.text = "YES! Thank you!";
+        Invoke("ClearText", 1.2f);
         ComputerManager.Instance.Invoke("TurnOffComputer", 1.2f);
         CharacterController.Instance.SetMoveTrue();
         ComputerManager.Instance.talkArea.GetComponent<BoxCollider2D>().enabled = false;
         turnOnComputer.win = true;
+    }
+    void ClearText()
+    {
+        helperText.text = "";
+
     }
     public void ChangeString()
     {

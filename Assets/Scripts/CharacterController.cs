@@ -7,6 +7,7 @@ public class CharacterController : MonoBehaviour {
     public float moveSpeed = 7f;
     public GameObject currentInteractable = null;
     bool move = true;
+    public Animator anim;
     static CharacterController _instance;
     public static CharacterController Instance
     {
@@ -41,27 +42,34 @@ public class CharacterController : MonoBehaviour {
             //Debug.Log("yep submitting and interacting");
             currentInteractable.GetComponentInParent<IInteractable>().Interact();
         }
-        if(move)
+        anim.SetBool("isMoving", false);
+
+        if (move)
         {
             if (Input.GetAxisRaw("Horizontal") > 0)
             {
+                anim.SetBool("isMoving", true);
                 transform.Translate(Vector2.right * Time.deltaTime * moveSpeed);
             }
             else if (Input.GetAxisRaw("Horizontal") < 0)
             {
+                anim.SetBool("isMoving", true);
                 transform.Translate(Vector2.left * Time.deltaTime * moveSpeed);
             }
             if (Input.GetAxisRaw("Vertical") > 0)
             {
+                anim.SetBool("isMoving", true);
                 transform.Translate(Vector2.up * Time.deltaTime * moveSpeed);
             }
             else if (Input.GetAxisRaw("Vertical") < 0)
             {
+                anim.SetBool("isMoving", true);
                 transform.Translate(Vector2.down * Time.deltaTime * moveSpeed);
             }
         }
 
-	}
+
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "ground")

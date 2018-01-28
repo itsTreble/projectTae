@@ -2,21 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenDoorWinAction : MonoBehaviour,IWinAction {
+public class OpenDoorWinAction : MonoBehaviour, IWinAction
+{
+    public float timeInvoke = 1.7f;
     public GameObject targetDoor;
     public void WinAction()
     {
-        targetDoor.SetActive(false);
-        //throw new System.NotImplementedException();
+        Invoke("HideDoor", timeInvoke);
+        //targetDoor.SetActive(false);
     }
+    void HideDoor()
+    {
+        targetDoor.SetActive(false);
 
- //   // Use this for initialization
- //   void Start () {
-		
-	//}
-	
-	//// Update is called once per frame
-	//void Update () {
-		
-	//}
+    }
 }

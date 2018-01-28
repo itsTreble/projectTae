@@ -26,6 +26,7 @@ public class ComputerManager : MonoBehaviour {
     }
     void StartNPCGuideDialogue()
     {
+        //talkArea.
         NPCGuideDialogue.SetActive(true);
     }
     public void TurnOnComputer(RPGTalkArea talkA)

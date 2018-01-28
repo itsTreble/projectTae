@@ -8,3 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ComputerScreen.unity
     guid: 4038f43804ed9f742b39e15a02716321
+  - enabled: 1
+    path: Assets/StartMenu.unity
+    guid: 555945e1bb741544c85d3dce6c735cc0
