@@ -2,26 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class TypingManager : MonoBehaviour {
     public Text helperText;
+    public TextAsset textFile;
     string currentStringToType = "password";
     static TypingManager _instance;
     public InputField inputField;
     public RPGTalk rpgTalk;
-    //public RPGTalkArea rpgTalk;
     public Image loadingBar;
     public int correctWord = 0;
     public int maxScore = 3;
     public int wrongCount = 0;
+    public GameObject gameGraphics;
     int maxWrong = 3;
     public GameObject compDialogue;
     public TurnOnComputer turnOnComputer;
     public int round = 0;
     Timer timer;
+    bool InGame = false;
     IWinAction win;
 
-    //bool inGameMode = false;
     public static TypingManager Instance
     {
         get
@@ -51,9 +53,10 @@ public class TypingManager : MonoBehaviour {
     {
         timer.StartTimer();
     }
-
     public void StartGame()
     {
+        inputField.enabled = true;
+        gameGraphics.SetActive(true);
         wrongCount = 0;
         correctWord = 0;
         helperText.enabled = true;
@@ -66,14 +69,9 @@ public class TypingManager : MonoBehaviour {
     {
         timer.PauseTimer();
     }
-
-
-    public void ActivateInputField()
-    {
-        inputField.ActivateInputField();
-    }
     public void EnterString(string input)
     {
+        inputField.ActivateInputField();
         if(wrongCount == maxWrong)
         {
             helperText.text = "Argh! he's kicking me off!";
@@ -81,13 +79,13 @@ public class TypingManager : MonoBehaviour {
         }
         else
         {
-            inputField.ActivateInputField();
             if (input.Equals(helperText.text) && !timer.pause)
             {
                 correctWord++;
                 ChangeString();
                 if (correctWord == maxScore)
                 {
+                    if(win != null)
                     win.WinAction();
                     Win();
                 }
@@ -104,11 +102,18 @@ public class TypingManager : MonoBehaviour {
     }
     public void Lose()
     {
+
+        InGame = false;
+        gameGraphics.SetActive(false);
+
         helperText.text = "";
         ComputerManager.Instance.TurnOffComputer();
     }
     public void Win()
     {
+        InGame = false;
+        gameGraphics.SetActive(false);
+
         round++;
         timer.pause = true;
         helperText.text = "YES! Thank you!";
@@ -126,7 +131,8 @@ public class TypingManager : MonoBehaviour {
     public void ChangeString()
     {
         StartTimer();
-        currentStringToType = "mai" + Random.Range(1,100);
+        //currentStringToType = "mai" + Random.Range(1,100);
+        currentStringToType = FileManager.Instance.GetRandomWord();
         helperText.text = currentStringToType;
     }
     private void Awake()
@@ -135,19 +141,27 @@ public class TypingManager : MonoBehaviour {
     }
     void OnEditInputField(InputField input)
     {
-        if(timer.pause)
+        if(!InGame)
+        {
+            Debug.Log("hello?");
+            inputField.text = "";
+        }
+        if (timer.pause)
         {
             //input.text = "";
         }
     }
+    void DeactivateInputField()
+    {
+        inputField.enabled = false;
+    }
     void Start () {
+
         inputField.onEndEdit.AddListener(delegate { OnEditInputField(inputField); });
         inputField.ActivateInputField();
         helperText.text = currentStringToType;
         timer = GetComponentInChildren<Timer>();
     }
-
-    // Update is called once per frame
     void Update () {
         if (Input.GetKeyDown("escape"))
             Application.Quit();

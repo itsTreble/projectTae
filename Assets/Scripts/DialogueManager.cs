@@ -27,6 +27,7 @@ public class DialogueManager : MonoBehaviour {
     }
     public void Talk()
     {
+        // need to figure out how to have a talk and repsonse system for the different npcs
         rpgVirusTalk.NewTalk("2", "3");
 
         if (TypingManager.Instance.round >= 1)

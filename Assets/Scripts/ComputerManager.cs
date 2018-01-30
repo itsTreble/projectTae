@@ -34,7 +34,9 @@ public class ComputerManager : MonoBehaviour {
         talkArea = talkA;
         talkArea.enabled = false;
         ComputerScreen.SetActive(true);
-        TypingManager.Instance.inputField.enabled = false;
+        CharacterController.Instance.SetMoveFalse();
+
+        //TypingManager.Instance.inputField.enabled = false;
         //currBoxCollider = collider;
     }
     public void TurnOffComputer()

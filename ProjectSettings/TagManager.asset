@@ -45,12 +45,18 @@ TagManager:
   - name: Ground
     uniqueID: 1738657391
     locked: 0
-  - name: Objects
-    uniqueID: 3482108077
-    locked: 0
   - name: Wall
     uniqueID: 791947223
     locked: 0
+  - name: Window
+    uniqueID: 2884006073
+    locked: 0
+  - name: Objects
+    uniqueID: 3482108077
+    locked: 0
   - name: Player
     uniqueID: 4185255801
+    locked: 0
+  - name: OverPlayer
+    uniqueID: 359307577
     locked: 0

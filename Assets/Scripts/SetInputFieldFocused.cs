@@ -12,6 +12,8 @@ public class SetInputFieldFocused : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        //this.GetComponent<InputField>().ActivateInputField();
+
+
+    }
 }
